@@ -2,15 +2,17 @@
 
 import { Menu } from 'lucide-react'
 import { DropdownButton, DropdownContent, DropdownItem } from '../Dropdown'
+import { useState } from 'react'
 
-export default function Header() {
+
+export default function Header({ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement>}) {
   return (
     <>
       <div className="flex min-h-16 shadow sticky top-0 bg-white px-4">
         <nav className='flex justify-between items-center w-full'>
           <div className="">
-            <button>
-              <Menu/>
+            <button className='' onClick={onClick}>
+              <Menu />
             </button>
           </div>
           <div className="inline-flex items-center gap-10">
