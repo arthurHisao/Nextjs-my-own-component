@@ -3,13 +3,11 @@ import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-
 interface IDropdownProps {
   label: string
   withAvatar?: boolean
   children: React.ReactNode
 }
-
 
 export function DropdownButton({ children, label, withAvatar }: IDropdownProps) {
   const [ isDropdownShown, setDropdownState ] = useState(false)
@@ -20,7 +18,7 @@ export function DropdownButton({ children, label, withAvatar }: IDropdownProps) 
 
   return (
     <>
-      <div className={`absolute top-0 left-0 right-0 h-screen w-screen z-40 overflow-hidden ${isDropdownShown ? 'block' : 'hidden'}`} onClick={() => setDropdownState(!isDropdownShown)}/>
+      <div className={`absolute top-0 left-0 right-0 h-screen w-full z-40 overflow-hidden ${isDropdownShown ? 'block' : 'hidden'}`} onClick={() => setDropdownState(!isDropdownShown)}/>
       <div className='relative'>
 
         <button 
@@ -41,13 +39,27 @@ export function DropdownButton({ children, label, withAvatar }: IDropdownProps) 
 
         <div
           onClick={handleClick} 
-          className={`absolute top-full left-0 right-0 z-50 shadow ${isDropdownShown ? 'block' : 'hidden'}`}
+          className={`relative ${isDropdownShown ? 'block' : 'hidden'}`}
         >
-          <ul className='bg-gray-50 divide-y-1 divide-gray-300/60'>
-            { children }
-          </ul>
+         { children }
         </div>
       </div>
+    </>
+  )
+}
+
+
+interface DropdownContent {
+  children: React.ReactNode
+  className?: string
+}
+
+export function DropdownContent({ children, className = '' }: DropdownContent) {
+  return (
+    <>
+      <ul className={`bg-gray-50 divide-y-1 divide-gray-300/60 absolute top-0 left-0 right-0 z-50 ${className}`}>
+        { children }
+      </ul>
     </>
   )
 }
