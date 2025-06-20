@@ -120,3 +120,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+.collapse-sidebar {
+  transition: width .3s ease-in-out;
+} 
+
+.collapse-sidebar-text {
+  /* transition: opacity .30s ease, visibility .30s ease; */
+  transition: opacity .50s ease-in-out, visibility 2s ease-in-out;
+  /* margin-left .3s linear, opacity .3s ease, visibility .3s ease; */
+}
+
+.collapse-sidebar-text-2 {
+  transition: opacity .25s ease-in-out, visibility 2s ease-in-out;
+}
+
+
+.collapse-sidebar-2 {
+  transition: width .3s ease-in-out, flex .3s ease-in-out;
+  /* transition: margin-left .3s ease-in-out, width .3s ease-in-out; */
+}
+/* transition: margin-left .3s ease-in-out, width .3s ease-in-out; */

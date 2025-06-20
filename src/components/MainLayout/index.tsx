@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Sidebar from '../Sidebar'
 import Header from '../Header'
+import { SidebarContext } from '@/context/SidebarContext'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const [ isSidebarCollapsed, setSidebarCollapsed ] = useState(false)
@@ -11,22 +12,25 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     setSidebarCollapsed(!isSidebarCollapsed)
   }
 
+
   return (
     <div className="relative flex flex-row justify-end flex-wrap h-screen">
+      <SidebarContext value={isSidebarCollapsed}>
         <div 
             className={`
-                flex ${isSidebarCollapsed ? 'w-16' : 'flex-2 '}
+              flex ${isSidebarCollapsed ? 'w-16 collapse-sidebar' : 'flex-2 w-64 collapse-sidebar-2'}
             `}
         >
-            <Sidebar isSidebarCollapsed />
+          <Sidebar />
         </div>
 
         <div className='flex flex-10'>
-            <main className='w-full'>
-                <Header onClick={handleToggleSidebar} />
-                { children }
-            </main>
+          <main className='w-full'>
+            <Header onClick={handleToggleSidebar} />
+            { children }
+          </main>
         </div>
+      </SidebarContext>
     </div>
   )
 }
