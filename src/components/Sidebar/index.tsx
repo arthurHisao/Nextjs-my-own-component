@@ -8,7 +8,7 @@ import { SidebarContext } from '@/context/SidebarContext'
 
 export default function Sidebar() {
     const isSidebarCollapsed = useContext(SidebarContext)
-    console.log('isSidebarCollapsed', isSidebarCollapsed)
+    // console.log('isSidebarCollapsed', isSidebarCollapsed)
 
     const getInitials = (text: string) => {
         const initial = text.split(' ').map(word => word[0])
