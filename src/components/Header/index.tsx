@@ -4,10 +4,13 @@ import { Menu, Moon, Sun } from 'lucide-react'
 import { DropdownButton, DropdownContent, DropdownItem } from '../Dropdown'
 import { useContext, useEffect, useState } from 'react'
 import { ThemeContext } from '@/context/ThemeContext'
+import { SidebarContext } from '@/context/SidebarContext'
 import ToggleSwitch from '../ToggleSwitch'
 
-export default function Header({ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement>}) {
+export default function Header(/*{ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement>}*/) {
   const { theme, toggleTheme } = useContext(ThemeContext) 
+  const { handleToggleSidebar } = useContext(SidebarContext) 
+
   const [ isDarkTheme, setDarkTheme ] = useState(false)  
     
   useEffect(() => {
@@ -15,14 +18,13 @@ export default function Header({ onClick }: { onClick: React.MouseEventHandler<H
   }, [theme])
     
   return (
-    <>
       <div className="flex min-h-16 border-b sticky top-0 px-4">
         <nav className='flex justify-between items-center w-full'>
-          <div className="">
-            <button className='' onClick={onClick}>
-              <Menu />
-            </button>
-          </div>
+
+          <button onClick={handleToggleSidebar}>
+            <Menu />
+          </button>
+
           <div className="inline-flex items-center gap-10">
             <div className="inline-flex gap-3">
               <ToggleSwitch
@@ -50,6 +52,5 @@ export default function Header({ onClick }: { onClick: React.MouseEventHandler<H
           </div>
         </nav>
       </div>
-    </>
   )
 }
