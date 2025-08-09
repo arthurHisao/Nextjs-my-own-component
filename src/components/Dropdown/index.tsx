@@ -57,7 +57,7 @@ interface DropdownContent {
 export function DropdownContent({ children, className = '' }: DropdownContent) {
   return (
     <>
-      <ul className={`bg-gray-50 divide-y-1 divide-gray-300/60 absolute top-0 left-0 right-0 z-50 ${className}`}>
+      <ul className={`divide-y-1 shadow divide-gray-300/60 absolute top-0 left-0 right-0 z-50 ${className}`}>
         { children }
       </ul>
     </>
@@ -72,8 +72,8 @@ interface DropdownItemProps {
 export function DropdownItem({ to = '', label }: DropdownItemProps) {
   return (
     <>
-      <li className='flex bg-gray-50 divide-y-8 divide-y-reverse divide-amber-900'>
-        <Link href={to} className={`w-full px-3 py-1.5 hover:bg-gray-200/65`}>
+      <li className='flex divide-y-8 divide-y-reverse divide-amber-900'>
+        <Link href={to} className={`w-full px-3 py-1.5 dark:hover:bg-white/60 hover:bg-gray-200/65`}>
           { label }
         </Link>
       </li>

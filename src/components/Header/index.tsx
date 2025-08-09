@@ -7,10 +7,9 @@ import { ThemeContext } from '@/context/ThemeContext'
 import { SidebarContext } from '@/context/SidebarContext'
 import ToggleSwitch from '../ToggleSwitch'
 
-export default function Header(/*{ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement>}*/) {
+export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext) 
-  const { handleToggleSidebar } = useContext(SidebarContext) 
-
+  const { isMobileScreen, handleToggleSidebar } = useContext(SidebarContext) 
   const [ isDarkTheme, setDarkTheme ] = useState(false)  
     
   useEffect(() => {
@@ -27,16 +26,18 @@ export default function Header(/*{ onClick }: { onClick: React.MouseEventHandler
 
           <div className="inline-flex items-center gap-10">
             <div className="inline-flex gap-3">
-              <ToggleSwitch
-                parentEvent={toggleTheme}
-                isActive={isDarkTheme}
-              >
-                {isDarkTheme ? (
-                  <Moon className='absolute top-0 left-0 right-0 p-[4px] w-[22px] h-[22px] rounded-full bg-gray-300' />
-                  ) : (
-                  <Sun className='absolute top-0 left-0 right-0 p-[4px] w-[22px] h-[22px] rounded-full'/>
-                )}
-              </ToggleSwitch>
+              {!isMobileScreen && (
+                <ToggleSwitch
+                  parentEvent={toggleTheme}
+                  isActive={isDarkTheme}
+                >
+                  {isDarkTheme ? (
+                    <Moon className='absolute top-0 left-0 right-0 p-[4px] w-[22px] h-[22px] rounded-full bg-gray-300' />
+                    ) : (
+                    <Sun className='absolute top-0 left-0 right-0 p-[4px] w-[22px] h-[22px] rounded-full'/>
+                  )}
+                </ToggleSwitch>
+              )}
             </div>
 
             <DropdownButton 
