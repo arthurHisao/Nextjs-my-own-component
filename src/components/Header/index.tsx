@@ -20,8 +20,8 @@ export default function Header() {
       <div className="flex min-h-16 border-b sticky top-0 px-4">
         <nav className='flex justify-between items-center w-full'>
 
-          <button onClick={handleToggleSidebar}>
-            <Menu />
+          <button onClick={handleToggleSidebar} className='cursor-pointer'>
+            <Menu/>
           </button>
 
           <div className="inline-flex items-center gap-10">

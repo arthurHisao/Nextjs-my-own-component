@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-// import { Accordion } from '../Accordion'
+import { Accordion } from '../Accordion'
 import { useContext, useEffect, useState } from 'react'
 import { ThemeContext } from '@/context/ThemeContext'
 import { SidebarContext } from '@/context/SidebarContext'
@@ -26,22 +26,32 @@ export default function Sidebar() {
 
     const sidebarLinks = [
         {
-            name: '',
             label: 'Dashboard',
             icon: 'LayoutDashboard',
-            url: '#'
+            url: '#',
+            children: [],
         }, 
         {
-            name: '',
-            label: 'Product',
-            icon: 'CircleSmall',
-            url: '#'
-        },
-        {
-            name: '',
-            label: 'Users',
-            icon: 'CircleSmall',
-            url: '#'
+            label: 'Components',
+            icon: 'Component',
+            url: '#',
+            children: [
+                {
+                    label: 'Cards',
+                    icon: 'CircleSmall',
+                    url: '#'
+                },
+                {
+                    label: 'Buttons',
+                    icon: 'CircleSmall',
+                    url: '#'
+                },
+                {
+                    label: 'Dropdowns',
+                    icon: 'CircleSmall',
+                    url: '#'
+                },
+            ]
         },
     ]
         
@@ -87,19 +97,43 @@ export default function Sidebar() {
                             <ul className='inline-flex flex-col justify-start w-full h-full divide-y'>
                                 {sidebarLinks.map((link) => ( 
                                     <li key={link.label} className='py-1.5 rounded'>
-                                        <Link href={link.url} className='flex items-center px-3'>
-                                            <div className="inline-flex items-center">
-                                                <LucideIcon name={link.icon} className='h-4 w-4' />
-                                                <span className={`
-                                                    ${!isMobileScreen && isSidebarCollapsed 
-                                                        ? 'opacity-0 invisible collapse-sidebar-text-2' 
-                                                        : 'opacity-100 visible collapse-sidebar-text ml-2'
-                                                    }
-                                                `}>
-                                                    {link.label}
-                                                </span>    
-                                            </div>
-                                        </Link>
+                                        { link.children.length > 0 ? (
+                                            <Accordion label={link.label} iconName={link.icon} className="bg-indigo-500 rounded text-white font-medium">
+                                                <ul className='divide-y'> 
+                                                    {link.children.map((child) => (
+                                                        <li key={child.label}>
+                                                            <Link href={child.url} className='flex items-center'>
+                                                                <div className="inline-flex items-center py-0.5">
+                                                                    <LucideIcon name={child.icon} className='h-4 w-4' />
+                                                                    <span className={`
+                                                                        ${!isMobileScreen && isSidebarCollapsed 
+                                                                            ? 'opacity-0 invisible collapse-sidebar-text-2' 
+                                                                            : 'opacity-100 visible collapse-sidebar-text ml-2'
+                                                                        }
+                                                                    `}>
+                                                                        {child.label}
+                                                                    </span>    
+                                                                </div>
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </Accordion>
+                                        ) : (
+                                            <Link href={link.url} className='flex items-center px-3'>
+                                                <div className="inline-flex items-center">
+                                                    <LucideIcon name={link.icon} className='h-4 w-4' />
+                                                    <span className={`
+                                                        ${!isMobileScreen && isSidebarCollapsed 
+                                                            ? 'opacity-0 invisible collapse-sidebar-text-2' 
+                                                            : 'opacity-100 visible collapse-sidebar-text ml-2'
+                                                        }
+                                                    `}>
+                                                        {link.label}
+                                                    </span>    
+                                                </div>
+                                            </Link>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
