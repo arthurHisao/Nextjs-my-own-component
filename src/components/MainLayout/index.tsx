@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar'
 import Header from '../Header'
 import { SidebarProvider } from '@/context/SidebarContext'
 import { ThemeProvider } from '@/context/ThemeContext'
+import Breadcrumbs from '../Breadcrumbs'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
 
@@ -16,6 +17,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           <section className='flex flex-10'>
             <main className='w-full'>
               <Header />
+              <Breadcrumbs/>
               { children }
             </main>
           </section>
