@@ -69,7 +69,7 @@ export default function Sidebar() {
                     ) : {}
                 }
             >
-                <aside className='w-full h-screen sticky top-0'>
+                <aside className='w-full sticky top-0'>
                     <div className='border-r h-full'>
                         <div className='h-16 w-full flex items-center border-b px-2.5'>
                             <Link
@@ -93,18 +93,18 @@ export default function Sidebar() {
                             </Link>
                         </div>
                         
-                        <nav className='h-auto lg:h-full w-full py-4 px-2'>
-                            <ul className='inline-flex flex-col justify-start w-full h-full divide-y'>
+                        <nav className='h-auto w-full py-4 px-2'>
+                            <ul className='inline-flex flex-col justify-start w-full divide-y'>
                                 {sidebarLinks.map((link) => ( 
                                     <li key={link.label} className='py-1.5 rounded'>
-                                        { link.children.length > 0 ? (
+                                        {link.children.length > 0 ? (
                                             <Accordion label={link.label} iconName={link.icon} className="bg-indigo-500 rounded text-white font-medium">
                                                 <ul className='divide-y'> 
                                                     {link.children.map((child) => (
                                                         <li key={child.label}>
                                                             <Link href={child.url} className='flex items-center'>
                                                                 <div className="inline-flex items-center py-0.5">
-                                                                    <LucideIcon name={child.icon} className='h-4 w-4' />
+                                                                    <LucideIcon name={child.icon} className='h-6 w-6 p-1' />
                                                                     <span className={`
                                                                         ${!isMobileScreen && isSidebarCollapsed 
                                                                             ? 'opacity-0 invisible collapse-sidebar-text-2' 
@@ -155,12 +155,6 @@ export default function Sidebar() {
                                 </div>
                             </footer>
                         )}
-                        {/* <li className='py-1.5 rounded'>
-                                <Accordion label='Permission' className="bg-indigo-500 rounded text-white font-medium">
-                                    <p>Content should be rendered</p>
-                                </Accordion>
-                            </li> */}
-                        {/* </ul> */}
                     </div>
                 </aside>
             </div>
