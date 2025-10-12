@@ -15,9 +15,9 @@ export default function Button({ size, color, label }: Properties) {
 
     const colors = {
         primary: 'bg-blue-500 hover:bg-blue-600/95 hover:border-blue-600 border border-blue-500 focus:border-blue-600 focus:bg-blue-600/95 ring-blue-500/50 shadow-blue-500/90',
-        positive: '',
-        negative: '',
-        warning: '',
+        positive: 'bg-green-600 hover:bg-green-700/95 hover:border-green-700 border border-green-600 focus:border-green-600 focus:bg-green-600/95 ring-green-700/50 shadow-green-600/90',
+        negative: 'bg-red-500 hover:bg-red-600 hover:border-red-500 border border-red-500 focus:border-red-500 focus:bg-red-600 ring-red-500/50 shadow-red-500/90',
+        warning: 'bg-yellow-500 hover:bg-yellow-600/95 hover:border-yellow-600 border border-yellow-500 focus:bg-yellow-600/95 focus:border-yellow-600/95 ring-yellow-600/50 shadow-yellow-600/90',
         info: ''
     }
     
