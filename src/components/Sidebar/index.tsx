@@ -7,12 +7,17 @@ import { ThemeContext } from '@/context/ThemeContext'
 import { SidebarContext } from '@/context/SidebarContext'
 import { LucideIcon } from '@/components/LucideIcon'
 import ToggleSwitch from '../ToggleSwitch'
+import { usePathname } from 'next/navigation'
 
 export default function Sidebar() {
     const { theme, toggleTheme } = useContext(ThemeContext) 
     const { isMobileScreen, isSidebarCollapsed, isOffCanvasShowing, handleToggleSidebar } = useContext(SidebarContext)
     const [ isDarkTheme, setDarkTheme ] = useState(false)  
     
+    const currentPath = usePathname()
+    
+    const [isActive, setIsActive] = useState(false)
+
     // Initials letters util for Avatar
     const getInitials = (text: string) => {
         const initial = text.split(' ').map(word => word[0])
@@ -23,6 +28,7 @@ export default function Sidebar() {
     useEffect(() => {
         setDarkTheme(theme === 'dark')
     }, [theme])
+
 
     const sidebarLinks = [
         {
@@ -38,17 +44,17 @@ export default function Sidebar() {
             children: [
                 {
                     label: 'Buttons',
-                    icon: 'CircleSmall',
+                    icon: 'Circle',
                     url: '/components/buttons'
                 },
                 {
                     label: 'Cards',
-                    icon: 'CircleSmall',
+                    icon: 'Circle',
                     url: '#'
                 },
                 {
                     label: 'Dropdowns',
-                    icon: 'CircleSmall',
+                    icon: 'Circle',
                     url: '#'
                 },
             ]
@@ -94,15 +100,15 @@ export default function Sidebar() {
                         </div>
                         
                         <nav className='h-auto w-full py-4 px-2'>
-                            <ul className='inline-flex flex-col justify-start w-full divide-y'>
+                            <ul className='inline-flex flex-col justify-start w-full'>
                                 {sidebarLinks.map((link) => ( 
-                                    <li key={link.label} className='py-1.5 rounded'>
+                                    <li key={link.label} className='py-0.5 rounded'>
                                         {link.children.length > 0 ? (
-                                            <Accordion label={link.label} iconName={link.icon} className="bg-indigo-500 rounded text-white font-medium">
-                                                <ul className='divide-y'> 
+                                            <Accordion setOpen label={link.label} iconName={link.icon} className="bg-indigo-500 rounded text-white font-medium">
+                                                <ul className='py-0.5'> 
                                                     {link.children.map((child) => (
-                                                        <li key={child.label}>
-                                                            <Link href={child.url} className='flex items-center'>
+                                                        <li key={child.label} className='py-0.5'> 
+                                                            <Link href={child.url} className={`flex items-center rounded py-1 px-3 ${currentPath === child.url ? 'active' : 'hover:dark:bg-white/10 hover:bg-gray-500/20'} `}>
                                                                 <div className="inline-flex items-center py-0.5">
                                                                     <LucideIcon name={child.icon} className='h-6 w-6 p-1' />
                                                                     <span className={`
@@ -120,7 +126,7 @@ export default function Sidebar() {
                                                 </ul>
                                             </Accordion>
                                         ) : (
-                                            <Link href={link.url} className='flex items-center'>
+                                            <Link href={link.url} className={`flex items-center rounded py-1.5 ${currentPath === link.url ? 'active' : 'hover:dark:bg-white/10 hover:bg-gray-500/20'}`}>
                                                 <div className="inline-flex items-center px-3">
                                                     <LucideIcon name={link.icon} className='h-6 w-6 p-1' />
                                                     <span className={`

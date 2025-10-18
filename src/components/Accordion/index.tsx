@@ -5,20 +5,25 @@ import { SidebarContext } from '@/context/SidebarContext'
 
 
 type Accordion =  {
+  setOpen?: boolean,
   children: React.ReactNode, 
-  iconName?: string
+  iconName?: string,
   label: string, 
   className?: string
 } 
 
 
-export function Accordion({ children, label, iconName, className = '' }: Accordion) {
+export function Accordion({ setOpen, children, label, iconName, className = '' }: Accordion) {
   const { isMobileScreen, isSidebarCollapsed } = useContext(SidebarContext)
   const [ isAccordionOpen, setAccordionState ] = useState(false)
 
   const handleToggle = () => {
     setAccordionState(!isAccordionOpen)
   }
+
+  useState(() => {
+    if(setOpen) setAccordionState(setOpen)
+  })
 
   return (
     <>
@@ -39,7 +44,7 @@ export function Accordion({ children, label, iconName, className = '' }: Accordi
         <ChevronLeft className={`h-4 w-4 flex items-center transition ease-out duration-200 ${isAccordionOpen ? '-rotate-90' : 'rotate-0'}`} />  
       </div>
 
-      <div className={`px-3 py-3 ${isAccordionOpen ? 'block' : 'hidden'}`}>
+      <div className={`${isAccordionOpen ? 'block' : 'hidden'}`}>
         { children }
       </div>
     </>
