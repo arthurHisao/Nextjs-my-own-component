@@ -6,9 +6,10 @@ interface Properties {
     label: string
     icon?: string
     iconRight?: boolean
+    loading?: boolean
 }
 
-export default function Button({ size, color, label, icon, iconRight }: Properties) {    
+export default function Button({ size, color, label, icon, iconRight, loading }: Properties) {    
     const sizes = {
         'xs': '0', 
         'sm': '0.5', 
@@ -26,21 +27,39 @@ export default function Button({ size, color, label, icon, iconRight }: Properti
     }
     
     return (
-        <button className={`
+        <button disabled={loading} className={`
+            ${loading ? 'cursor-not-allowed opacity-50' : ' cursor-pointer'}
             ${sizes ? `py-${sizes[size as keyof typeof size]}` : 'py-0.5'}
             ${colors[color as keyof typeof color] ?? 'bg-gray-400 hover:bg-gray-500/95 hover:border-gray-500 border border-gray-400 focus:border-gray-500 focus:bg-gray-500/95 ring-gray-500/50 shadow-gray-500/90'} 
-            cursor-pointer rounded-[3px] px-2.5 ease-in-out duration-300 focus:ring-[.16rem] focus:shadow-inset
+            rounded-[3px] px-2.5 ease-in-out duration-300 focus:ring-[.16rem] focus:shadow-inset
         `}>
-            {icon ? (
-                <div className={`flex items-center gap-1 flex-wrap break-all max-w-32 ${iconRight ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <LucideIcon name={icon} />
-                    <span className="text-sm font-light tracking-tight text-white">
-                        {label}
-                    </span>
-                </div>
-            ) : (
-                <span className="text-sm font-light tracking-tight text-white">{label}</span>
-            )}
+            <div className={`flex items-center gap-1 flex-wrap break-all max-w-32 ${iconRight ? 'flex-row-reverse' : 'flex-row'}`}>
+                {icon ? (
+                    <>
+                        {loading ? ( 
+                            <svg className="mr-3 size-5 animate-spin text-white" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        ) : (
+                            <LucideIcon name={icon} />
+                        )}
+                        <span className="text-sm font-light tracking-tight text-white">
+                            {label}
+                        </span>
+                    </>
+                ) : (
+                    <>
+                        {loading && 
+                            <svg className="mr-3 size-5 animate-spin text-white" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        }
+                        <span className="text-sm font-light tracking-tight text-white">{label}</span>
+                    </>
+                )}
+            </div>
         </button>
     )
 }
