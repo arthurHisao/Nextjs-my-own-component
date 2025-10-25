@@ -45,8 +45,18 @@ export default function Page() {
                     <Button label="Default" size='md' />
                     <Button label="Default" size='lg' />
                     <Button label="Default" size='xl' />
-                </div>                
+                </div>                  
             </div>
+
+            <div className='grid grid-rows-[auto] flex-wrap border rounded-t-sm  items-center mt-4'>
+                <div className='col-span-full px-4 h-full py-1.5 border-b'>Button with Icons</div>
+
+                <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
+                    <Button label="With Icons" icon="Dog" size='sm'/>
+                    <Button label="With Icons" icon="CircleSmall" iconRight size='sm'/>
+                </div>          
+            </div>
+
         </div>
     )
 }

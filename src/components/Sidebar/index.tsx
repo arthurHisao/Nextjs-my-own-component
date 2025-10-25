@@ -65,7 +65,7 @@ export default function Sidebar() {
         <>
             <div 
                 className={`
-                    flex flex-none lg:ml-0 dark:bg-[#0a0a0a] bg-white 
+                    flex flex-none lg:ml-0 h-full dark:bg-[#11171e] bg-white elevate-x-1 dark:border-[#151c23] border-r z-10
                     ${!isMobileScreen && isSidebarCollapsed ? 'ml-[-155px] lg:w-16 collapse-sidebar' : 'ml-[-165px]  lg:flex-2 lg:w-64 collapse-sidebar-2'}
                 `}
                 style={ isMobileScreen 
@@ -76,8 +76,8 @@ export default function Sidebar() {
                 }
             >
                 <aside className='w-full sticky top-0'>
-                    <div className='border-r h-full'>
-                        <div className='h-16 w-full flex items-center border-b px-2.5'>
+                    <div className='h-full'>
+                        <div className='h-16 w-full flex items-center px-2.5'>
                             <Link
                                 href="#"
                                 className='text-xl w-full whitespace-nowrap'
@@ -88,7 +88,7 @@ export default function Sidebar() {
                                     </span>
                                     <span className={`
                                         ${!isMobileScreen && isSidebarCollapsed 
-                                            ? 'opacity-0 invisible collapse-sidebar-text-2' 
+                                            ? 'opacity-0 invisible collapse-sidebar-text-2 w-0' 
                                             : 'opacity-100 visible collapse-sidebar-text ml-2'
                                         }
                                         overflow-hidden

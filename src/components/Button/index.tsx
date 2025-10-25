@@ -1,10 +1,14 @@
+import { LucideIcon } from "../LucideIcon"
+
 interface Properties {
     size?: string
     color?: string
     label: string
+    icon?: string
+    iconRight?: boolean
 }
 
-export default function Button({ size, color, label }: Properties) {    
+export default function Button({ size, color, label, icon, iconRight }: Properties) {    
     const sizes = {
         'xs': '0', 
         'sm': '0.5', 
@@ -27,7 +31,16 @@ export default function Button({ size, color, label }: Properties) {
             ${colors[color as keyof typeof color] ?? 'bg-gray-400 hover:bg-gray-500/95 hover:border-gray-500 border border-gray-400 focus:border-gray-500 focus:bg-gray-500/95 ring-gray-500/50 shadow-gray-500/90'} 
             cursor-pointer rounded-[3px] px-2.5 ease-in-out duration-300 focus:ring-[.16rem] focus:shadow-inset
         `}>
-            <span className="text-sm font-light tracking-tight text-white">{label}</span>
+            {icon ? (
+                <div className={`flex items-center gap-1 flex-wrap break-all max-w-32 ${iconRight ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <LucideIcon name={icon} />
+                    <span className="text-sm font-light tracking-tight text-white">
+                        {label}
+                    </span>
+                </div>
+            ) : (
+                <span className="text-sm font-light tracking-tight text-white">{label}</span>
+            )}
         </button>
     )
 }
