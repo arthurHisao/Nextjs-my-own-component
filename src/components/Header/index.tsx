@@ -17,7 +17,7 @@ export default function Header() {
   }, [theme])
     
   return (
-      <div className="flex min-h-16 sticky top-0 px-4 elevate-2 dark:border-[#151c23] border-b">
+      <div className="flex min-h-16 sticky top-0 px-4 elevate-2 dark:bg-[#19222e] dark:border-[#151c23] border-b">
         <nav className='flex justify-between items-center w-full'>
 
           <button onClick={handleToggleSidebar} className='cursor-pointer'>

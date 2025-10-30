@@ -5,8 +5,8 @@ export default function Page() {
         <div className="w-full px-4 flex flex-col h-[calc(100vh-112px)] overflow-auto">
             <h2 className='mt-4 mb-1.5 text-2xl'>Buttons example:</h2>
 
-            <div className='grid grid-rows-[auto] flex-wrap border rounded-t-sm  items-center'>
-                <div className='col-span-full px-4 h-full py-1.5 border-b'>The button component has different size and color variations.</div>
+            <div className='grid grid-rows-[auto] flex-wrap items-center rounded-t-xs border dark:border-[#19222e] dark:shadow-lg/35 shadow-[#19222e]'>
+                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b dark:bg-[#19222e]'>The button component has different size and color variations.</div>
                 <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
                     <Button label="Primary" color="primary" size='xs'/>
                     <Button label="Primary" color="primary" size='sm'/>
@@ -48,8 +48,8 @@ export default function Page() {
                 </div>                  
             </div>
 
-            <div className='grid grid-rows-[auto] flex-wrap border rounded-t-sm  items-center mt-4'>
-                <div className='col-span-full px-4 h-full py-1.5 border-b'>Button with Icons and loading state</div>
+            <div className='grid grid-rows-[auto] flex-wrap items-center rounded-t-xs border dark:border-[#19222e] dark:shadow-lg/35 shadow-[#19222e] mt-4 '>
+                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b dark:bg-[#19222e]'>Button with Icons and loading state</div>
 
                 <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
                     <Button label="With Icons" icon="Dog" size='sm'/>

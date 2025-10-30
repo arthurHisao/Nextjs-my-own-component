@@ -65,7 +65,7 @@ export default function Sidebar() {
         <>
             <div 
                 className={`
-                    flex flex-none lg:ml-0 h-full dark:bg-[#11171e] bg-white elevate-x-1 dark:border-[#151c23] border-r z-10
+                    flex flex-none lg:ml-0 h-full dark:bg-[#19222e] bg-white elevate-x-1 dark:border-[#19222e] border-r z-10
                     ${!isMobileScreen && isSidebarCollapsed ? 'ml-[-155px] lg:w-16 collapse-sidebar' : 'ml-[-165px]  lg:flex-2 lg:w-64 collapse-sidebar-2'}
                 `}
                 style={ isMobileScreen 

@@ -17,8 +17,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           <section className='flex flex-10'>
             <main className='w-full h-full'>
               <Header />
-              <Breadcrumbs/>
-              { children }
+                <Breadcrumbs/>
+                { children }
             </main>
           </section>
         </SidebarProvider>
