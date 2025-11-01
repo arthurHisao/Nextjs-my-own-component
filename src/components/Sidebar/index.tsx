@@ -48,6 +48,11 @@ export default function Sidebar() {
                     url: '/components/buttons'
                 },
                 {
+                    label: 'Inputs',
+                    icon: 'Circle',
+                    url: '/components/inputs'
+                },
+                {
                     label: 'Cards',
                     icon: 'Circle',
                     url: '#'
