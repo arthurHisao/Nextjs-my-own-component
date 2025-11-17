@@ -57,6 +57,14 @@ export default function Page() {
                     <Button label="Processing..." loading size='md'/>
                 </div>          
             </div>
+
+            <div className='grid grid-rows-[auto] flex-wrap items-center dark:bg-[#19222e] rounded-t-xs border dark:border-[#19222e] dark:shadow-lg/35 shadow-[#19222e] mt-4 '>
+                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b'>The Button component can override default class</div>
+
+                <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
+                    <Button label="Custom class" icon="SquareCode" className="p-2.5 bg-amber-300 hover:bg-amber-200 focus:bg-currentColor rounded-none font-bold text-md"/>
+                </div>          
+            </div>
         </div>
     )
 }
