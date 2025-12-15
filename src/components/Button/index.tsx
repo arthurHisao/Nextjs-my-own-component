@@ -5,7 +5,7 @@ import LoadingComponent from '@/components/LoadingComponent'
 interface Properties {
     size?: string
     color?: string
-    label: string
+    label?: string
     icon?: string
     iconRight?: boolean
     loading?: boolean

@@ -55,7 +55,7 @@ export default function Sidebar() {
                 {
                     label: 'Cards',
                     icon: 'Circle',
-                    url: '#'
+                    url: '/components/cards'
                 },
                 {
                     label: 'Dropdowns',
