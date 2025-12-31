@@ -16,12 +16,20 @@ export default function Page() {
             </div>
 
             <div className='grid grid-rows-[auto] flex-wrap items-center dark:bg-[#19222e] rounded-t-xs border dark:border-[#19222e] dark:shadow-lg/35 shadow-[#19222e] mt-4'>
-                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b'>The Input component has different variations.</div>
+                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b'>The Input component has different types.</div>
                 <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
                     <Input placeholder="Type Something..."/>
                     <Input placeholder="Type Password" type="password"/>
                     <Input placeholder="Type your email" type="email"/>
                     <Input placeholder="Select file" type="file"/>
+                    <Input placeholder="Text Area" type="textarea"/>
+                </div>                              
+            </div>
+
+            <div className='grid grid-rows-[auto] flex-wrap items-center dark:bg-[#19222e] rounded-t-xs border dark:border-[#19222e] dark:shadow-lg/35 shadow-[#19222e] mt-4'>
+                <div className='col-span-full px-4 h-full py-1.5 rounded-t-xs border-b'>The Input has different variants.</div>
+                <div className='px-4 py-3 flex gap-2 items-center flex-wrap'>
+                    <Input placeholder="Input underlined" variant='underlined'/>
                 </div>                              
             </div>
         </div>
