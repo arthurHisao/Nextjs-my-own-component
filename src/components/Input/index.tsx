@@ -36,7 +36,6 @@ function Input({ variant, size = 'sm', type = 'text', placeholder }: Input) {
   }
 
   const sizes = {
-    xs: '0', 
     sm: '0.5', 
     md: '1', 
     lg: '1.5', 
@@ -74,6 +73,8 @@ function Input({ variant, size = 'sm', type = 'text', placeholder }: Input) {
     setHasValue(e.target.value.length > 0)
   }
 
+  const paddingValue = sizes[size as keyof typeof sizes] ? `calc(1.2 * ${sizes[size as keyof typeof sizes]}rem) 0.5rem` : '0.6rem 0.5rem'
+
   if (variant) {
     return (
       <div className="relative">
@@ -82,10 +83,10 @@ function Input({ variant, size = 'sm', type = 'text', placeholder }: Input) {
           id={componentId}
           ref={inputRef}
           className={`
-            py-2.5
             peer border rounded-xs px-2.5 outline-0 focus:ring-2 ring-blue-500/40 transition-all placeholder:text-xs block placeholder-transparent
             dark:focus:bg-[#19222e] focus:border-0 focus:outline-none select-none
           `}
+          style={{ padding: paddingValue }}
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleChange}
